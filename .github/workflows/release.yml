@@ -10,17 +10,18 @@ jobs:
       uses: jonahsnider/kaitai-action@v1.0.1
     - run: mkdir -p build
     - name: Run kaitai-struct-compiler
+      continue-on-error: true
       run: kaitai-struct-compiler --target all --outdir build/ *.ksy
     - name: Zip sources
       run: |
-      mkdir -p /tmp/output/
-      cd build/
-      for d in */; do
-          archive="$(basename "$d").zip"
-          mv "$d" sf3
-          zip -r "/tmp/output/$archive" sf3
-          mv sf3 "$d"
-      done
+        mkdir -p /tmp/output/
+        cd build/
+        for d in */; do
+            archive="$(basename "$d").zip"
+            mv "$d" sf3
+            zip -r "/tmp/output/$archive" sf3
+            mv sf3 "$d"
+        done
     - name: Create release
       continue-on-error: true
       uses: ncipollo/release-action@v1
