@@ -23,14 +23,14 @@ seq:
 types:
   physics_model:
     seq:
-      - id: shape_count
-        type: u2
       - id: mass
         type: f4
       - id: tensor
         type: f4
         repeat: expr
         repeat-expr: 9
+      - id: shape_count
+        type: u2
       - id: shapes
         type: shape
         repeat: expr
