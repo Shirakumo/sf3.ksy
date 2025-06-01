@@ -1,7 +1,9 @@
 meta:
   id: sf3_table
-  file-extension: ar.sf3
   title: SF3 Table
+  file-extension: tab.sf3
+  xref:
+    mime: application/x.sf3-table
   license: zlib
   ks-version: 0.8
   encoding: ASCII
@@ -21,14 +23,14 @@ seq:
 types:
   table:
     seq:
-      - id: spec_length
-        type: u4
       - id: column_count
         type: u2
       - id: row_length
         type: u8
       - id: row_count
         type: u8
+      - id: spec_length
+        type: u4
       - id: column_specs
         type: column_spec
         repeat: expr
@@ -37,7 +39,7 @@ types:
         type: row
         repeat: expr
         repeat-expr: row_count
-        size: row_length * row_count
+        size: row_length
   column_spec:
     seq:
       - id: name_length
@@ -53,9 +55,9 @@ types:
         enum: column_types
     instances:
       element_size:
-        value: 0x0F & column_length
+        value: 0xF & column_type.to_i
       element_count:
-        value: column_length / element_size
+        value: '(column_type == column_types::string)? 1 : column_length / element_size'
   row:
     seq:
       - id: cells
@@ -68,6 +70,7 @@ types:
         type: u2
     seq:
       - id: elements
+        size: _root.table.column_specs[column].column_length
         repeat: expr
         repeat-expr: _root.table.column_specs[column].element_count
         type:
