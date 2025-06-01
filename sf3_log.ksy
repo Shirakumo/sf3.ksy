@@ -1,7 +1,7 @@
 meta:
   id: sf3_log
   title: SF3 Log
-  file-extension: log.sf3
+  file-extension: ar.sf3
   xref:
     mime: application/x.sf3-log
   license: zlib
@@ -59,6 +59,7 @@ types:
         type: u8
         repeat: expr
         repeat-expr: entry_count
+      - size: entry_offsets[0]-12-entry_count*8
       - id: entries
         type: entry
         repeat: expr
@@ -70,7 +71,7 @@ types:
       - id: time
         type: u8
       - id: severity
-        type: s8
+        type: s1
       - id: source
         type: string1
       - id: category
