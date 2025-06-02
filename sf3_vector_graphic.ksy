@@ -88,10 +88,10 @@ types:
         type: point
       - id: color
         type: color
-      - id: font
-        type: font
       - id: font_size
         type: f4
+      - id: font
+        type: font
       - id: string_length
         type: u2
       - id: string
