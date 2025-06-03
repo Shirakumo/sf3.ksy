@@ -42,17 +42,17 @@ types:
         size: row_length
   column_spec:
     seq:
+      - id: column_length
+        type: u4
+      - id: column_type
+        type: u1
+        enum: column_types
       - id: name_length
         type: u2
       - id: name
         type: strz
         encoding: UTF-8
         size: name_length
-      - id: column_length
-        type: u4
-      - id: column_type
-        type: u1
-        enum: column_types
     instances:
       element_size:
         value: 0xF & column_type.to_i
