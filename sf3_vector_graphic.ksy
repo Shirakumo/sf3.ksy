@@ -52,36 +52,36 @@ types:
             'instruction_types::matrix': matrix
   line:
     seq:
-      - id: outline
-        type: shape_outline
       - id: color
         type: color
       - id: thickness
         type: f4
+      - id: outline
+        type: shape_outline
   rectangle:
     seq:
-      - id: bounds
-        type: shape_bounds
       - id: fill
         type: shape_fill
+      - id: bounds
+        type: shape_bounds
   circle:
     seq:
+      - id: fill
+        type: shape_fill
       - id: bounds
         type: shape_bounds
-      - id: fill
-        type: shape_fill
   polygon:
     seq:
-      - id: outline
-        type: shape_outline
       - id: fill
         type: shape_fill
+      - id: outline
+        type: shape_outline
   curve:
     seq:
-      - id: outline
-        type: shape_outline
       - id: fill
         type: shape_fill
+      - id: outline
+        type: shape_outline
   text:
     seq:
       - id: position
