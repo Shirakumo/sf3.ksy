@@ -60,6 +60,7 @@ types:
             'option_types::heading': heading
             'option_types::link': link
             'option_types::target': target
+            'option_types::font': font
   bold: {}
   italic: {}
   underline: {}
@@ -95,6 +96,13 @@ types:
       - id: address
         type: strz
         size: address_length
+  font:
+    seq:
+      - id: font_length
+        type: u2
+      - id: font
+        type: strz
+        size: font_length
 enums:
   option_types:
     0x01: bold
@@ -107,3 +115,4 @@ enums:
     0x08: heading
     0x09: link
     0x0A: target
+    0x0B: font
