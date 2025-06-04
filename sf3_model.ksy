@@ -76,6 +76,13 @@ types:
         value: 0 != (raw & 0x08)
       has_tangent:
         value: 0 != (raw & 0x10)
+      vertex_stride:
+        value: >
+          (((raw >> 0) & 1) * 3) +
+          (((raw >> 1) & 1) * 2) +
+          (((raw >> 2) & 1) * 3) +
+          (((raw >> 3) & 1) * 3) +
+          (((raw >> 4) & 1) * 3)
   material_type:
     seq:
       - id: raw
