@@ -4,14 +4,33 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout Git repository
+    - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Setup Kaitai Struct compiler
-      uses: jonahsnider/kaitai-action@v1.0.1
+    - name: Checkout kaitai-struct-compiler
+      uses: actions/checkout@v4
+      with:
+        repository: kaitai-io/kaitai_struct_compiler
+        ref: serialization
+        path: kaitai-struct-compiler
+    - name: Setup JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: temurin
+        java-version: 17
+        cache: sbt
+    - uses: sbt/setup-sbt@v1
+    - name: Build the Kaitai Struct Compiler
+      shell: bash
+      run: |
+        cd kaitai-struct-compiler
+        sbt --error compilerJVM/stage
+        cd ..
     - run: mkdir -p build
     - name: Run kaitai-struct-compiler
       continue-on-error: true
-      run: kaitai-struct-compiler --target all --outdir build/ *.ksy
+      run: |
+        kaitai-struct-compiler/jvm/target/universal/stage/bin/kaitai-struct-compiler              --target all --outdir build/ *.ksy
+        kaitai-struct-compiler/jvm/target/universal/stage/bin/kaitai-struct-compiler --read-write --target all --outdir build/ *.ksy
     - name: Zip sources
       run: |
         mkdir -p /tmp/output/
