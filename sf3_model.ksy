@@ -26,7 +26,7 @@ types:
       - id: len
         type: u2
       - id: value
-        type: str
+        type: strz
         encoding: UTF-8
         size: len
   model:
