@@ -1,4 +1,4 @@
-## About
-This is an implementation of the [SF3 (Simple File Format Family)](https://shirakumo.org/docs/sf3) specification in [Kaitai Struct](https://kaitai.io).
+# This repository has [moved](https://shirakumo.org/projects/sf3.ksy)!
+Due to Microsoft's continued enshittification of the platform this repository has been moved to [Codeberg](https://shirakumo.org/projects/sf3.ksy) in August of 2025. It will not receive further updates or patches. **Issues and pull requests will not be looked at here either**, please submit your patches and issue tickets on Codeberg, or send them directly via good old email patches to [shirakumo@tymoon.eu](mailto:shirakumo@tymoon.eu).
 
-Kaitai Struct provides parser implementations of the formats for a variety of languages, precompiled versions of which you can download directly from the releases page: https://shirakumo.org/projects/sf3.ksy/releases/latest
+Thanks.
